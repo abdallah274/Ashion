@@ -1,0 +1,67 @@
+ul {
+  list-style: none;
+}
+
+li {
+    padding: 15px;
+}
+
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+.product-overlay {
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+// .row {
+//      --bs-gutter-x: 0rem;
+
+// }
+
+.bg-cover {
+  background-size: cover;
+}
+
+.bg-center {
+  background-position: center;
+}
+
+
+.product-img-wrapper {
+  position: relative;
+  overflow: hidden;
+
+  .icon-overlay {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  &:hover .icon-overlay {
+    opacity: 1;
+  }
+
+  .icon-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease;
+    font-size: 16px;
+  }
+
+  .icon-circle:hover {
+    transform: scale(1.1);
+  }
+}

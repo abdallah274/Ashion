@@ -1,0 +1,116 @@
+<nav class="navbar navbar-expand-lg bg-white shadow-sm sticky-top py-3">
+  <div class="container-fluid px-4">
+    <a class="navbar-brand fw-bold text-dark m-0" href="#">
+      <img src="./assets/logo.png.webp" alt="Logo" style="height: 30px" />
+    </a>
+
+    <button class="navbar-toggler ms-auto border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="fa-solid fa-bars fs-3"></i>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-center mt-3 mt-lg-0" id="navbarNav">
+      <ul class="navbar-nav gap-3 mx-auto text-center">
+        <li class="nav-item">
+          <a class="nav-link active fw-semibold text-dark" aria-current="page" routerLink="home" routerLinkActive="active-link">HOME</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fw-semibold text-dark" routerLink="womens" routerLinkActive="active-link">WOMEN’S</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fw-semibold text-dark" routerLink="men" routerLinkActive="active-link">MEN’S</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fw-semibold text-dark" routerLink="Electronics" routerLinkActive="active-link">ELECTRONICS</a>
+        </li>
+      </ul>
+
+      <div class="d-flex d-lg-none align-items-center gap-3 mt-3 flex-column">
+        <div class="d-flex align-items-center gap-3">
+          <a href="#" class="text-dark text-decoration-none position-relative" (click)="toggleSearch()">
+            <i class="ri-search-line fs-5"></i>
+          </a>
+
+          <div class="dropdown">
+            <button class="btn border-0" type="button" id="userDropdownMobile" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fa-solid fa-user fs-4"></i>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdownMobile">
+              @if (!isLoggedIn) {
+                <li><a class="dropdown-item" routerLink="login" routerLinkActive="active-link">Login</a></li>
+                <li><a class="dropdown-item" routerLink="register" routerLinkActive="active-link">Register</a></li>
+              } @else {
+                <li><a class="dropdown-item" (click)="_Authentication.logOut()">Sign Out</a></li>
+                <li><a class="dropdown-item" routerLink="account" routerLinkActive="active-link">Account</a></li>
+              }
+            </ul>
+          </div>
+
+          <a href="#" class="text-dark position-relative text-decoration-none">
+            <i class="ri-heart-line fs-5"></i>
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">2</span>
+          </a>
+
+          <a href="#" routerLink="cart" class="text-dark position-relative text-decoration-none"> 
+            <i class="ri-shopping-bag-line fs-5"></i>
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">{{cartCount}}</span>
+          </a>
+        </div>
+
+        @if (showSearch) {
+          <input 
+            type="text" 
+            class="form-control mt-2 w-100 shadow"
+            placeholder="Search for a product..."
+            (input)="onSearch($event)"
+            (blur)="showSearch = false"
+            inputmode="latin"
+            style="direction: ltr; text-align: left;">
+        }
+      </div>
+    </div>
+
+    <div class="d-none d-lg-flex align-items-center gap-3">
+      <a href="#" class="text-dark text-decoration-none position-relative" (click)="toggleSearch()">
+        <i class="ri-search-line fs-5"></i>
+      </a>
+
+      @if (showSearch) {
+        <input 
+          type="text" 
+          class="form-control position-absolute top-100 start-50 translate-middle-x mt-2 w-50 shadow"
+          placeholder="Search for a product..."
+          (input)="onSearch($event)"
+          (blur)="showSearch = false"
+          inputmode="latin"
+          style="direction: ltr; text-align: left;">
+      }
+
+      <div class="dropdown">
+        <button class="btn border-0" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="fa-solid fa-user fs-4"></i>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+          @if (!isLoggedIn) {
+            <li><a class="dropdown-item" routerLink="login" routerLinkActive="active-link">Login</a></li>
+            <li><a class="dropdown-item" routerLink="register" routerLinkActive="active-link">Register</a></li>
+          } @else {
+            <li><a class="dropdown-item" (click)="_Authentication.logOut()">Sign Out</a></li>
+            <li><a class="dropdown-item" routerLink="account" routerLinkActive="active-link">Account</a></li>
+          }
+        </ul>
+      </div>
+
+      <a href="#" class="text-dark position-relative text-decoration-none">
+        <i class="ri-heart-line fs-5"></i>
+        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">2</span>
+      </a>
+
+      <a href="#" routerLink="cart" class="text-dark position-relative text-decoration-none"> 
+        <i class="ri-shopping-bag-line fs-5"></i>
+        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">{{cartCount}}</span>
+      </a>
+    </div>
+  </div>
+</nav>
+

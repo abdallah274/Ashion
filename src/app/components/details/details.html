@@ -1,0 +1,79 @@
+@if (productDetails) {
+    <div class="container my-5">
+  <div class="row">
+    <div class="col-md-6 mb-4 mb-md-0">
+      <div class="card border-0">
+        <img [src]="mainImage" class="card-img-top product-main-image" [alt]="productDetails.title">
+      </div>
+
+      <div class="d-flex justify-content-center mt-3 flex-wrap">
+        @for (img of productDetails.images; track img) {
+          <img 
+            [src]="img" 
+            class="img-thumbnail small-thumbnail mx-1 border-2"
+            [ngClass]="{'border-warning': mainImage === img}" 
+            style="width: 70px; height: 70px; cursor: pointer;" 
+            (click)="mainImage = img" 
+            alt="Product thumbnail">
+        }
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <h1 class="fw-bold mb-2">{{ productDetails.title }}</h1>
+
+      <p class="text-muted mb-3">
+        <span class="fw-semibold">Brand:</span> 
+        <a href="#" class="text-decoration-none">{{ productDetails.brand.name }}</a> | 
+        <span class="fw-semibold">Category:</span> 
+        <a href="#" class="text-decoration-none">{{ productDetails.category.name }}</a>
+      </p>
+
+      <div class="d-flex align-items-center mb-3">
+        <div class="star-rating me-2">
+          <i class="fas fa-star" [class.text-warning]="productDetails.ratingsAverage >= 1"></i>
+          <i class="fas fa-star" [class.text-warning]="productDetails.ratingsAverage >= 2"></i>
+          <i class="fas fa-star" [class.text-warning]="productDetails.ratingsAverage >= 3"></i>
+          <i class="fas fa-star" [class.text-warning]="productDetails.ratingsAverage >= 4"></i>
+          <i class="fas fa-star" [class.text-warning]="productDetails.ratingsAverage >= 5"></i>
+        </div>
+        <span class="text-muted">({{ productDetails.ratingsAverage }} / 5)</span>
+      </div>
+
+      <hr>
+
+      <div class="price-section my-3">
+        <h2 class="fw-bolder text-danger mb-0">{{ productDetails.priceAfterDiscount | currency:'EGP':'symbol' }}</h2>
+        @if (productDetails.price) {
+          <span class="text-success fw-semibold">
+            <del class="text-muted me-2">{{ productDetails.price | currency:'EGP':'symbol' }}</del>
+            (Extra Discount)
+          </span>
+        }
+      </div>
+
+      <p class="fw-semibold" [ngClass]="{
+          'text-success': productDetails.quantity > 0,
+          'text-danger': productDetails.quantity === 0
+        }">
+        {{ productDetails.quantity > 0 ? 'In Stock' : 'Out of Stock' }}
+      </p>
+
+      <p class="product-description mt-3">
+        {{ productDetails.description }}
+      </p>
+
+      <hr>
+
+      <div class="d-grid gap-2 mt-4">
+        <button class="btn btn-warning btn-lg fw-bold" [disabled]="productDetails.quantity === 0">
+          <i class="fas fa-cart-plus me-2"></i> Add to Cart
+        </button>
+        <button class="btn btn-outline-secondary btn-lg">
+          <i class="fas fa-heart me-2"></i> Add to Wishlist
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+}

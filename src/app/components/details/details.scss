@@ -1,0 +1,36 @@
+
+.product-main-image {
+  max-height: 500px;
+  object-fit: contain;
+  border-radius: 8px;
+  border: 1px solid #dee2e6;
+  padding: 1rem;
+}
+
+.small-thumbnail {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  cursor: pointer;
+  border: 1px solid #ddd;
+  transition: border-color 0.2s ease;
+
+  &:hover {
+    border-color: #ffc107;
+  }
+}
+
+.star-rating .fa-star {
+  color: #e0e0e0;
+}
+
+.btn-warning {
+  background-color: #ffd814;
+  border-color: #fcd200;
+  color: #0f1111;
+
+  &:hover {
+    background-color: #f7ca00;
+    border-color: #f5c200;
+  }
+}

@@ -1,0 +1,99 @@
+<section class="d-flex justify-content-center align-items-center">
+  <div class="w-75 bg-white p-4 rounded-3 shadow my-2" style="max-width: 400px;">
+    <h1 class="text-center mb-4">Sgin Up</h1>
+    <form [formGroup]="registerForm" (ngSubmit)="registerSubmit()">
+<div class="mb-3 position-relative">
+  <label for="name" class="form-label">Name</label>
+
+  <input type="text"name="name" id="name" class="form-control pe-5" placeholder="your name" formControlName="name">
+  @if (registerForm.get('name')?.valid && registerForm.get('name')?.touched) {
+    <span class="position-absolute" style="top: 40px; right: 15px; color: green; font-size: 1.2rem;"> ✔ </span>
+  }
+
+  @if (!registerForm.get('name')?.valid && registerForm.get('name')?.touched) {
+    <p class="mb-0 mt-1 small" [style.color]="registerForm.get('name')?.hasError('required') ? 'red' : 'green'" >
+      * Name is required
+     </p>
+
+    <p class="mb-0 small" [style.color]="registerForm.get('name')?.hasError('minlength') ? 'red' : 'green'" >
+      * Name must be at least 3 characters
+    </p>
+
+    <p
+      class="mb-0 small" [style.color]="registerForm.get('name')?.hasError('maxlength') ? 'red' : 'green'">
+      * Name must not exceed 15 characters
+    </p>
+  }
+</div>
+
+<div class="mb-3 position-relative">
+  <label for="email" class="form-label">Email</label>
+
+  <input type="email" name="email" id="email" class="form-control pe-5" placeholder="your email" formControlName="email">
+  @if (registerForm.get('email')?.valid && registerForm.get('email')?.touched) {
+    <span class="position-absolute" style="top: 40px; right: 15px; color: green; font-size: 1.2rem;"> ✔ </span>
+  }
+
+  @if (!registerForm.get('email')?.valid && registerForm.get('email')?.touched) {
+    <p class="mb-0 mt-1 small" [style.color]="registerForm.get('email')?.hasError('email') ? 'red' : 'green'">
+      * Enter a valid email address
+    </p>
+  }
+</div>
+
+<div class="mb-3 position-relative">
+  <label for="password" class="form-label">Password</label>
+
+  <input type="password" name="password" id="password" class="form-control pe-5" placeholder="your password" formControlName="password">
+  @if (registerForm.get('password')?.valid && registerForm.get('password')?.touched) {
+    <span class="position-absolute" style="top: 40px; right: 15px; color: green; font-size: 1.2rem;"> ✔ </span>
+  }
+
+  @if (!registerForm.get('password')?.valid && registerForm.get('password')?.touched) {
+    <p class="mb-0 mt-1 small" [style.color]="registerForm.get('password')?.hasError('pattern') ? 'red' : 'green'">
+      * Password must contain at least 6 digits
+    </p>
+  }
+</div>
+
+<div class="mb-3 position-relative">
+  <label for="confirmPassword" class="form-label">Confirm Password</label>
+
+  <input type="password" name="confirmPassword" id="confirmPassword" class="form-control pe-5" placeholder="confirm your password" formControlName="rePassword">
+  @if(registerForm.get('rePassword')?.touched) {
+    @if(registerForm.get('password')?.value !== registerForm.get('rePassword')?.value) {
+      <p class="mb-0 mt-1 small text-danger">
+        * Passwords do not match
+      </p>
+    } @else {
+      <span class="position-absolute" style="top: 40px; right: 15px; color: green; font-size: 1.2rem;"> ✔ </span>
+    }
+  }
+</div>
+
+<div class="mb-3 position-relative">
+  <label for="phone" class="form-label">Phone</label>
+
+  <input type="tel" name="phone" id="phone" class="form-control pe-5" placeholder="your phone number" formControlName="phone">
+  @if (registerForm.get('phone')?.touched) {
+    @if (registerForm.get('phone')?.invalid) {
+      <p class="mb-0 mt-1 small text-danger">
+        * Phone number must be 11 digits and start with 01
+      </p>
+    } @else {
+      <span class="position-absolute" style="top: 40px; right: 15px; color: green; font-size: 1.2rem;"> ✔ </span>
+    }
+  }
+</div>
+
+      <button [disabled]="registerForm.invalid" type="submit" class="btn btn-primary w-100">Sign Up</button>
+@if(errMessage){
+  <div class="alert alert-danger mt-3 text-center" role="alert">
+    {{ errMessage }}
+  </div>
+}
+
+    </form>
+  </div>
+</section>
+

@@ -1,0 +1,51 @@
+<form [formGroup]="orderForm" (ngSubmit)="onSubmit()" class="p-4 border rounded shadow-sm bg-light">
+  <h4 class="fw-bold mb-4">Shipping Address</h4>
+  <div formGroupName="shippingAddress" class="row g-3">
+
+    <!-- Address Details -->
+    <div class="col-12">
+      <label class="form-label fw-semibold">Address Details</label>
+      <input type="text" formControlName="details" class="form-control" placeholder="Enter address details">
+      @if(orderForm.get('shippingAddress.details')?.invalid && orderForm.get('shippingAddress.details')?.touched) {
+        <div class="text-danger small mt-1">
+          Address must be at least 5 characters
+        </div>
+      }
+    </div>
+
+    <!-- Phone -->
+    <div class="col-12">
+      <label class="form-label fw-semibold">Phone Number</label>
+      <input type="text" formControlName="phone" class="form-control" placeholder="010xxxxxxxx">
+      @if(orderForm.get('shippingAddress.phone')?.invalid && orderForm.get('shippingAddress.phone')?.touched) {
+        <div class="text-danger small mt-1">
+          Phone must be a valid 11-digit Egyptian number
+        </div>
+      }
+    </div>
+
+    <!-- City Dropdown -->
+    <div class="col-12">
+      <label class="form-label fw-semibold">City</label>
+      <select formControlName="city" class="form-select">
+        <option value="" disabled selected>Select City</option>
+         @for(city of cities; track city) {
+          <option [value]="city">{{ city }}</option>
+        } 
+      </select>
+      @if(orderForm.get('shippingAddress.city')?.invalid && orderForm.get('shippingAddress.city')?.touched) {
+        <div class="text-danger small mt-1">
+          City is required
+        </div>
+      }
+    </div>
+
+    <!-- Submit Button -->
+    <div class="col-12">
+      <button  type="submit" class="btn btn-dark-custom w-100 mt-3" [disabled]="orderForm.invalid">
+        <i class="bi bi-check-circle me-2"></i> Confirm Order
+      </button>
+    </div>
+  </div>
+</form>
+

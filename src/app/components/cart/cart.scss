@@ -1,0 +1,118 @@
+/* Using :host to ensure styles are scoped to this component */
+:host {
+  font-family: 'Inter', sans-serif; /* Or your preferred font */
+}
+
+.main-container {
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+}
+
+.product-card,
+.summary-card,
+.feature-item {
+  border: 1px solid #e9ecef;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+  border-radius: 15px;
+  padding: 1.5rem;
+}
+
+.product-image {
+  width: 100px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.quantity-selector {
+  display: flex;
+  align-items: center;
+  background-color: #f8f9fa;
+  border-radius: 25px;
+  padding: 0.25rem;
+  border: 1px solid #dee2e6;
+}
+
+.quantity-selector .btn {
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+  color: #495057;
+}
+
+.quantity-selector .form-control {
+  border: none;
+  background: transparent;
+  box-shadow: none;
+  width: 40px;
+  text-align: center;
+  padding: 0;
+}
+
+.summary-card {
+  background-color: #f8f9fa;
+}
+
+.cart-total-card {
+  background-color: #ffedd5; /* Light orange background */
+  border-radius: 15px;
+  padding: 1.5rem;
+}
+
+.btn-dark-custom, .btn-light-custom {
+  border-radius: 25px;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+}
+
+.btn-dark-custom {
+  background-color: #212529;
+  color: #fff;
+}
+
+.btn-light-custom {
+  background-color: #fff;
+  color: #212529;
+  border: 1px solid #dee2e6;
+}
+
+.form-control-custom {
+  border-radius: 12px;
+  background-color: #f1f3f5;
+  border: none;
+  padding: 0.75rem 1.25rem;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+}
+
+.feature-item .icon-wrapper {
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1rem; /* Use margin-right for LTR, will be flipped by dir="rtl" */
+  font-size: 1.5rem;
+}
+
+/* Icon background colors */
+.icon-pink { background-color: #ffe0e6; color: #ff5d8f; }
+.icon-beige { background-color: #fff0db; color: #ff9a2a; }
+.icon-green { background-color: #d4edda; color: #155724; }
+.icon-yellow { background-color: #fff3cd; color: #856404; }
