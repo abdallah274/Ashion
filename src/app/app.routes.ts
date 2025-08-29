@@ -33,7 +33,7 @@ export const routes: Routes = [
 {path:'', component:AuthLayout, children:[
     {path:'' , redirectTo:'login' , pathMatch:'full'},
     {path:'login' , component:Login},
-    {path:'Register' , component:Register},
+    {path:'register' , component:Register},
     {path:'forgotPassword' , component:ForgotPassword},
     {path:'account' , component:Account}
 
