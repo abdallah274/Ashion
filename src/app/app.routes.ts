@@ -40,3 +40,34 @@ export const routes: Routes = [
 ]},
   { path: '**', component: NotFound }
 ];
+// export const routes: Routes = [
+//   {
+//     path: '',
+//     component: BlankLayout,
+//     children: [
+//       { path: '', redirectTo: 'home', pathMatch: 'full' },
+//       { path: 'home', component: Home },
+//       { path: 'womens', component: Women },
+//       { path: 'men', component: Men },
+//       { path: 'details/:id', component: Details },
+//       { path: 'cart', component: Cart },
+//       { path: 'allorders', component: Allorders },
+//       { path: 'orders/:id', component: Orders },
+//       { path: 'Electronics', component: Electronics }
+//     ]
+//   },
+
+//   {
+//     path: 'auth',
+//     component: AuthLayout,
+//     children: [
+//       { path: '', redirectTo: 'login', pathMatch: 'full' },
+//       { path: 'login', component: Login },
+//       { path: 'register', component: Register },
+//       { path: 'forgotPassword', component: ForgotPassword },
+//       { path: 'account', component: Account }
+//     ]
+//   },
+
+//   { path: '**', component: NotFound }
+// ];

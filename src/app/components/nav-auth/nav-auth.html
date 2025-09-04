@@ -1,1 +1,37 @@
-<p>nav-auth works!</p>
+<nav class="navbar navbar-expand-lg bg-white shadow-sm sticky-top py-3">
+  <div class="container-fluid px-4">
+    <!-- Logo -->
+    <a class="navbar-brand fw-bold text-dark m-0" routerLink="/home">
+      <img src="./assets/logo.png.webp" alt="Logo" style="height: 30px" />
+    </a>
+
+    <!-- Toggler -->
+    <button class="navbar-toggler ms-auto border-0" type="button" data-bs-toggle="collapse"
+      data-bs-target="#authNavbar" aria-controls="authNavbar" aria-expanded="false"
+      aria-label="Toggle navigation">
+      <i class="fa-solid fa-bars fs-3"></i>
+    </button>
+
+    <!-- Auth Links -->
+    <div class="collapse navbar-collapse justify-content-end" id="authNavbar">
+      <ul class="navbar-nav gap-3 text-center">
+        @if (!isLoggedIn) {
+          <li class="nav-item">
+            <a class="nav-link fw-semibold text-dark" routerLink="/login" routerLinkActive="active-link">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link fw-semibold text-dark" routerLink="/register" routerLinkActive="active-link">Register</a>
+          </li>
+        } @else {
+          <li class="nav-item">
+            <a class="nav-link fw-semibold text-dark" routerLink="/account" routerLinkActive="active-link">Account</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link fw-semibold text-dark" (click)="_Authentication.logOut()">Logout</a>
+          </li>
+        }
+      </ul>
+    </div>
+  </div>
+</nav>
+

@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Products } from '../core/products';
 import { Iproducts } from '../core/iproduct';
 import { CommonModule } from '@angular/common';
+import { CartServis } from '../core/cart';
 
 @Component({
   selector: 'app-details',
@@ -13,9 +14,11 @@ import { CommonModule } from '@angular/common';
 export class Details implements OnInit{
 private readonly _ActivatedRoute = inject(ActivatedRoute)
 private readonly _Products = inject(Products)
+private readonly _CartServis = inject(CartServis)
 productDetails:Iproducts | null =null;
 mainImage: string = '';
 category?: { name: string };
+
 
 
 
@@ -35,9 +38,6 @@ if (this.productDetails && this.productDetails.images && this.productDetails.ima
 }
 
 
-}, error:(err)=>{
-  console.log(err);
-  
 }
 })
     
@@ -47,4 +47,13 @@ if (this.productDetails && this.productDetails.images && this.productDetails.ima
   
 
 }
+  addToCart(id: string): void {
+    this._CartServis.addProductsToCart(id).subscribe({
+      next: (res) => {
+        if (res.status == 'success') {
+          this._CartServis.cartNumber.next(res.numOfCartItems);
+        }
+      }
+    });
+  }
 }

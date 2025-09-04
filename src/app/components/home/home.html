@@ -76,18 +76,34 @@
 
 
 <div class="container">
-  <div class="d-flex justify-content-between align-items-center my-4">
-    <div>
-      <h1>NEW PRODUCT</h1>
-    </div>
-<ul class="d-flex gap-3 list-unstyled">
-  <li><button class="btn btn-link fw-semibold text-dark" (click)="filterProducts('all')">All</button></li>
-  <li><button class="btn btn-link fw-semibold text-dark" (click)="filterProducts(`Women's Fashion`)">WOMEN’S</button></li>
-  <li><button class="btn btn-link fw-semibold text-dark" (click)="filterProducts(`Men's Fashion`)">MEN’S</button></li>
-  <li><button class="btn btn-link fw-semibold text-dark" (click)="filterProducts(`Electronics`)">Electronics</button></li>
-</ul>
-
+<div class="d-flex justify-content-between align-items-center my-4">
+  <div>
+    <h1>NEW PRODUCT</h1>
   </div>
+
+  <!-- Desktop buttons -->
+  <ul class="d-none d-md-flex gap-3 list-unstyled mb-0">
+    <li><button class="btn btn-link fw-semibold text-dark" (click)="filterProducts('all')">All</button></li>
+    <li><button class="btn btn-link fw-semibold text-dark" (click)="filterProducts(`Women's Fashion`)">WOMEN’S</button></li>
+    <li><button class="btn btn-link fw-semibold text-dark" (click)="filterProducts(`Men's Fashion`)">MEN’S</button></li>
+    <li><button class="btn btn-link fw-semibold text-dark" (click)="filterProducts(`Electronics`)">Electronics</button></li>
+  </ul>
+
+  <!-- Mobile dropdown -->
+  <div class="dropdown d-md-none">
+<button class="btn border-0 bg-transparent shadow-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+  <i class="fa-solid fa-bars-staggered fs-4 text-dark"></i>
+</button>
+
+    <ul class="dropdown-menu dropdown-menu-end">
+      <li><a class="dropdown-item" (click)="filterProducts('all')">All</a></li>
+      <li><a class="dropdown-item" (click)="filterProducts(`Women's Fashion`)">WOMEN’S</a></li>
+      <li><a class="dropdown-item" (click)="filterProducts(`Men's Fashion`)">MEN’S</a></li>
+      <li><a class="dropdown-item" (click)="filterProducts(`Electronics`)">Electronics</a></li>
+    </ul>
+  </div>
+</div>
+
 <div class="row">
   @for (product of paginatedProducts; track product.id) {
     <div class="col-md-6 col-lg-3 col-xl-3 mb-4">
